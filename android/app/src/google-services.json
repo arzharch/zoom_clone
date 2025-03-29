@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "43583467539",
+    "project_id": "zoom-clone-a067d",
+    "storage_bucket": "zoom-clone-a067d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43583467539:android:fae5339ae16b03d88f0fe6",
+        "android_client_info": {
+          "package_name": "com.example.zoom_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43583467539-onr530grdhdtuglicd62k69d1gb74t33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCunvP2ljdT1IkWnOxP-IEWF9J2LgBdtiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43583467539-onr530grdhdtuglicd62k69d1gb74t33.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "43583467539-uol0fqg1avpfthes68blr5kcs2adl1bo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.zoomClone"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
