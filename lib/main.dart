@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:zoom_clone/screens/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:zoom_clone/utils/colors.dart';
 import 'package:zoom_clone/screens/home_screen.dart';
 
@@ -25,18 +26,37 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginScreen(),
         '/home':
             (context) => HomeScreen(
-              onLogout: () {
-                if (Navigator.canPop(context)) {
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    '/login',
-                    (route) => false,
-                  );
-                }
+              onLogout: () async {
+                await FirebaseAuth.instance.signOut(); // Sign out the user
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/login',
+                  (route) => false,
+                );
               },
             ),
       },
-      home: const LoginScreen(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasData) {
+            return HomeScreen(
+              onLogout: () async {
+                await FirebaseAuth.instance.signOut(); // Sign out the user
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/login',
+                  (route) => false,
+                );
+              },
+            );
+          } else {
+            return const LoginScreen();
+          }
+        },
+      ),
     );
   }
 }
